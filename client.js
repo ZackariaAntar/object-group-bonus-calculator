@@ -32,7 +32,7 @@ const employees = [
   }
 ];
 
-console.log('array of employee data: ',  employees );
+// console.log('array of employee data: ',  employees );
 
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
@@ -61,9 +61,20 @@ function calculateIndividualEmployeeBonus( employee ) {
     bonusPercentage = .1
   }
 
-
+  if (employee.employeeNumber.length === 4){
+    bonusPercentage+=.05
+  }
+  if(employees.annualSalary>65000){
+    bonusPercentage -= .01
+  }
+if(bonusPercentage>.13){
+  bonusPercentage = .13
+}
+let increase = 1 + bonusPercentage
   newReview['name']= employee.name
   newReview['bonusPercentage']= bonusPercentage
+  newReview['totalCompensation']= employee.annualSalary * increase
+  newReview["totalBonus"] = Math.round(employee.annualSalary * bonusPercentage);
 return newReview;
 }
 
